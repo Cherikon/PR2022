@@ -11,7 +11,5 @@ app.use((req, res, next) => {
     res.set('WWW-Authenticate', 'Basic realm="401"')
     res.status(401).send('Authentication required.')
 })
-app.get('/', (req, res)=>{
-    res.sendFile(__dirname + '/index.html')
-})
+app.use(express.static(require('path').resolve('../../dist/')))
 app.listen(8081);

@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 export class SingletonClass {
     constructor(name = "") {
         if (!!SingletonClass.instance) {

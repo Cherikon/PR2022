@@ -55,6 +55,5 @@ http.createServer(function (request, response) {
         authenticateUser(response); return;
     }
     response.writeHeader(200, {"Content-Type": "text/html"});
-    fs.createReadStream( __dirname + '/index.html').pipe(response);
-
+    fs.createReadStream( require('path').resolve('../../dist/index.html')).pipe(response);
 }).listen(8082);
