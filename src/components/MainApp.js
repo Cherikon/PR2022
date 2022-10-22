@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Singleton, SingletonClass} from "./Singleton";
 import styled from "styled-components"
 import {createRoot} from "react-dom/client";
@@ -60,19 +60,8 @@ customElements.define("time-formatted", class extends HTMLElement {
 });
 setInterval(() => time.setAttribute('datetime', new Date()), 1000);
 export const MainApp = () => {
-    const [state, setState] = useState(false)
-    const classOne = new SingletonClass("One");
-    const classTwo = new SingletonClass("Two");
-    const classThree = new SingletonClass();
-    const funcOne = new Singleton("One");
-    const funcTwo = new Singleton("Two");
-    const funcThree = new Singleton();
-    // console.log(`classOne - "${classOne.getName()}"`);
-    // console.log(`classTwo - "${classTwo.getName()}"`);
-    // console.log(`classThree - "${classThree.getName()}"`);
-    // console.log(`funcOne - "${funcOne.name}"`);
-    // console.log(`funcTwo - "${funcTwo.name}"`);
-    // console.log(`funcThree - "${funcThree.name}"`);
+    const auto_show_class = new SingletonClass("Chausow");
+    const auto_show_func = new Singleton("Chausow");
     const det_style = {
         marginBottom: 8,
     }
@@ -86,9 +75,9 @@ export const MainApp = () => {
     return (
         <div>
             <Header>
-                <h1 id="elem">Салон поддержанных авто</h1>
+                <h1 id="elem">Салон поддержанных авто {auto_show_class.getName()}</h1>
                 <div style={{display: "flex", gap: 8}}>
-                    Текущее время:<time-formatted id="time" hour="numeric" minute="numeric" second="numeric"></time-formatted>
+                    Текущее время:<time-formatted id="time" hour="numeric" minute="numeric" second="numeric"/>
                 </div>
             </Header>
             <Shadow>

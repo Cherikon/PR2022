@@ -1,12 +1,21 @@
-export class SingletonClass {
+class AbstractSingle {
+    constructor(name) {
+        if (this.constructor.name === 'AbstractSingle') {
+            throw new Error(`${this.constructor.name}: can not create instance of abstract class`);
+        }
+
+        this.name = name;
+    }
+}
+
+export class SingletonClass extends AbstractSingle {
     constructor(name = "") {
+        super(name);
         if (!!SingletonClass.instance) {
             return SingletonClass.instance;
         }
 
         SingletonClass.instance = this;
-
-        this.name = name;
 
         return this;
     }
